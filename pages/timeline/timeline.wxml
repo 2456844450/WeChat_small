@@ -1,0 +1,26 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+</cu-custom>
+<view class="cu-timeline">
+  <block wx:for="{{hornArr}}">
+    <view class="cu-item cur cuIcon-noticefill">
+
+      <view class="content bg-green shadow-blur">
+
+        <view>
+          {{item.title}}
+        </view>
+        <view>
+          {{item.content}}
+        </view>
+        <view>
+          {{item.creat_time}}
+        </view>
+
+
+
+      </view>
+
+    </view>
+  </block>
+</view>

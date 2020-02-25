@@ -1,0 +1,65 @@
+<import src="../tpls/products/products-tpl.wxml" />
+<view class="container home-container">
+  <swiper indicator-dots="true" autoplay="true" class="swiper">
+    <block wx:for="{{bannerArr}}">
+      <swiper-item class="banner-item" bindtap="onProductsItemTap" data-id="{{item.key_word}}">
+        <image class="item-image" src="{{item.img.url}}" mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="swiper-container">
+    <image class="swiper_laba" src="../../imgs/icon/laba.png"></image>
+    <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="4000">
+      <block wx:for="{{hornArr}}">
+        <swiper-item>
+          <view class="swiper_item" bindtap="showModal" data-id="{{item.id}}">{{item.title}}
+            <span data-id="{{item.id}}">(点击查看)</span>
+          </view>
+        </swiper-item>
+        
+      </block>
+    </swiper>
+  </view>
+  <view class="home-main">
+    <!--主题精选-->
+    <view class="home-main-theme">
+      <view class="home-main-header">精选主题</view>
+      <view class="theme-box">
+        <!-- <image class="sm" src="../../imgs/icon/树木支撑架.jpg"></image> -->
+        <block wx:for="{{themeArr}}">
+          <view wx:if="{{index==2}}" class="theme-item big" bindtap="onThemesItemTap" data-id="{{item.id}}" data-name="{{item.name}}">
+            <image src="{{item.topic_img.url}}"></image>
+          </view>
+          <view wx:else class="theme-item" bindtap="onThemesItemTap" data-id="{{item.id}}" data-name="{{item.name}}">
+            <image src="{{item.topic_img.url}}"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!--单品首发-->
+    <view class="home-main-products">
+      <view class="home-main-header">最近新品</view>
+      <template is="products" data="{{productsArr:productsArr}}" />
+    </view>
+  </view>
+</view>
+<view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+          <view class="cu-dialog">
+            <view class="cu-bar bg-white justify-end">
+              <view class="content">{{msgList.title}}</view>
+              <view class="action" bindtap="closeModal">
+                <text class="cuIcon-close text-red"></text>
+              </view>
+            </view>
+            <view class="padding-xl">
+              {{msgList.content}}
+            </view>
+            <view class="cu-bar bg-white justify-end">
+              <view class="action">
+                <button class="cu-btn bg-green margin-left" bindtap="hideModal">查看全部通知</button>
+
+              </view>
+            </view>
+          </view>
+        </view>
+

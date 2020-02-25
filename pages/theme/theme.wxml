@@ -1,0 +1,11 @@
+<import src="../tpls/products/products-tpl.wxml"/>
+<view class="container theme-container" hidden="{{!loadingHidden}}">
+    <view class="theme-header"></view>
+    <view class="theme-main">
+        <!--单品-->
+        <template is="products" data="{{productsArr:themeInfo.products}}"/>
+    </view>
+</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>
